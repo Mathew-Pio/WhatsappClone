@@ -11,4 +11,24 @@ export const login = async (req, res) => {
     }catch(err){
         return res.status(500).json({message:'Login failed'})
     }
+};
+
+export const onBoardUser = async (req, res) => {
+    try{
+        const {email, name, about, profilePicture} = req.body;
+        if(!email || !name || !profilePicture){
+            return res.status(404).json({message:'Email, Name, Image are required.'})
+        }
+        const user = new User({
+            email,
+            name,
+            about,
+            profilePicture
+        })
+        await user.save();
+
+        return res.status(201).json({user})
+    }catch(err){
+
+    }
 }

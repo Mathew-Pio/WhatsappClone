@@ -17,7 +17,7 @@ function ContextMenu({options, coordinates,contextMenu,setContextMenu}) {
     }
   }, [])
 
-  const handleClick = (e,callback) => {
+  const handleClick = (e, callback) => {
     e.stopPropagation();
     setContextMenu(false);
     callback();
@@ -33,7 +33,7 @@ function ContextMenu({options, coordinates,contextMenu,setContextMenu}) {
     <ul>
       {
         options.map(({name, callback}) => 
-          <li className='px-5 p-2 cursor-pointer hover:bg-background-default-hover' key={name} onClick={() => handleClick(e,callback)}><span className='text-white'>{name}</span></li>
+          <li className='px-5 p-2 cursor-pointer hover:bg-background-default-hover' key={name} onClick={(e) => handleClick(e,callback)}><span className='text-white'>{name}</span></li>
         )
       }
     </ul>
